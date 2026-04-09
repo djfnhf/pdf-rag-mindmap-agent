@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+PyMuPDF
+langchain-text-splitters
+chromadb
+sentence-transformers
+openai
+python-dotenv
+rapidocr-onnxruntime
+numpy
+opencv-python

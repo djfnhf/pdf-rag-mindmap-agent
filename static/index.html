@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码学知识库 RAG 智能体</title>
+    <!-- 引入美观的现代字体 -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Marked.js 用于渲染 Markdown 为 HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Mermaid.js 用于将特定代码转为思维导图 -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <!-- 我们自己的页面样式 -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">🔐 AI 密码学导图智能体</div>
+            <div class="status-indicator">
+                <span class="status-dot">●</span> <span>在线服务运行中</span>
+                <button id="theme-toggle" class="theme-toggle">🌙 </button>
+            </div>
+        </header>
+
+        <main class="chat-container" id="chat-container">
+            <!-- 欢迎提示语 -->
+            <div class="message ai-message">
+                <div class="avatar">👨‍🏫</div>
+                <div class="message-content">
+                    <p>您好！我是深谙《密码学中的可证明安全性》的专属知识库大模型助手。</p>
+                    <p>请输入您想深入了解的密码学概念，我将从本地文献中为您提炼解答，并实时绘制 <strong>交互式逻辑脉络思维导图</strong>。</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="input-container">
+            <div class="input-wrapper">
+                <textarea id="user-input" placeholder="针对某个知识点甚至画出的思维导图直接发起追问..." rows="1" autofocus></textarea>
+                <button id="send-btn" class="send-btn">一键发送</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 全屏遮罩模态框 -->
+    <div id="fullscreen-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-toolbar">
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomIn()" title="放大">＋</button>
+                    <span id="zoom-level">100%</span>
+                    <button class="zoom-btn" onclick="zoomOut()" title="缩小">－</button>
+                    <button class="zoom-btn zoom-btn-text" onclick="resetZoom()" title="重置">重置</button>
+                    <button class="zoom-btn zoom-btn-text" onclick="fitToScreen()" title="适应窗口">适应窗口</button>
+                </div>
+                <button class="close-btn" onclick="closeFullscreen()">✖ 退出全屏</button>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- 自己的前后端交互与渲染逻辑 -->
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>
